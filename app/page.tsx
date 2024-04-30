@@ -3,15 +3,14 @@
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import { EmblaCarousel } from "./components/EmblaCarousel";
-import { Heading, ScrollArea } from "@radix-ui/themes";
 import MiraHotels from "./MiraHotels";
-import React, { useState, useEffect } from 'react';
 import FooterMobil from "./components/FooterMobil";
 import { AwardCarousel } from "./components/AwardCarousel";
 import Contact from "./components/Contact";
 import FooterDesktop from "./components/FooterDesktop";
-import { EmblaCarouselDesktop } from "./components/EmblaCarouselDesktop";
 import MiraHotelsDesktop from "./MiraHotelsDesktop";
+import ContactDesktop from "./components/ContactDesktop";
+import {AwardDesktop }from "./components/AwardDesktop";
 
 
 const images = [
@@ -50,7 +49,7 @@ const imageAwards = [
 export default function Home() {
   return (
     <div className="flex flex-col " >
-      <Navbar />
+      <Navbar/>
       <div className="hidden relative py-6 sm:flex flex-col justify-center">
       <EmblaCarousel images={imagesDesktop} />
         
@@ -68,12 +67,27 @@ export default function Home() {
         <MiraHotels />
       </div>
 
-      <div className="flex items-center justify-center my-10">
-        <h2 className="text-2xl text-slate-600"> OUR AWARDS </h2>
+      <div className="flex items-center justify-center mb-5 mt-10">
+        <h2 className="text-4xl text-slate-600 "> OUR AWARDS </h2>
       </div>
 
+      
+      <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
+      <AwardDesktop images={imageAwards} />
+      </div>
+      <div className="sm:hidden relative flex items-center my-4 justify-center">
       <AwardCarousel images={imageAwards} />
+      </div>
+
+
+
+      <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
+      <ContactDesktop />
+      </div>
+      <div className="sm:hidden relative flex items-center my-4 justify-center">
       <Contact />
+      </div>
+      
 
       
       <div className="hidden relative py-6 sm:flex flex-col justify-center">

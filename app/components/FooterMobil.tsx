@@ -11,7 +11,7 @@ const Footer = () => {
             <div className='padding-container justify-center text-center max-container flex w-full flex-col gap-14'>
                 <div className='flex flex-col items-center justify-center gap-[10%] '>
                     <div className="flex p-5 flex-col justify-center items-center w-full bg-[url('https://miramarehotels.com/assets/frontend/images/footer/phone-footer.webp')]">
-                        <Image className='' src="https://miramarehotels.com/assets/frontend/images/header/miramare-logo.svg" alt="logo" width={250} height={250} style={{objectFit: "contain"}} />
+                        <img className='' src="https://miramarehotels.com/assets/frontend/images/header/miramare-logo.svg" alt="logo" width={250} height={250} style={{objectFit: "contain"}} />
                         <Link href="/" className='text-white text-xs mt-5'>
                             <p >Social Platforms Privacy Policy</p>
                         </Link>
@@ -20,7 +20,7 @@ const Footer = () => {
                                 <ul className='regular-14 flex gap-4 '>
                                     {SOCIALS.links.map((link) => (
                                         <Link href="/" key={link}>
-                                            <Image src={link} alt="logo" width={15} height={15} />
+                                            <img src={link} alt="logo" width={15} height={15} />
                                         </Link>
                                     ))}
                                 </ul>

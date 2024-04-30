@@ -39,7 +39,3 @@ const MiraHotels = () => {
 }
 
 export default MiraHotels
-
-/**https://miramarehotels.com/assets/frontend/images/homepage/hotels-display-1.webp
- * https://miramarehotels.com/assets/frontend/images/homepage/hotels-display-2.webp
- */
