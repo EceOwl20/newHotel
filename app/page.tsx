@@ -1,6 +1,5 @@
+'use client';
 
-'use-client';
-import Image from "next/image";
 import Navbar from "./components/Navbar";
 import { EmblaCarousel } from "./components/EmblaCarousel";
 import MiraHotels from "./MiraHotels";
@@ -10,7 +9,8 @@ import Contact from "./components/Contact";
 import FooterDesktop from "./components/FooterDesktop";
 import MiraHotelsDesktop from "./MiraHotelsDesktop";
 import ContactDesktop from "./components/ContactDesktop";
-import {AwardDesktop }from "./components/AwardDesktop";
+import { AwardDesktop } from "./components/AwardDesktop";
+import React, { useState } from 'react';
 
 
 const images = [
@@ -47,49 +47,55 @@ const imageAwards = [
 ]
 
 export default function Home() {
+  const [selectedLanguage, setSelectedLanguage] = useState('TR');
+
+    const handleLanguageChange = (language:string) => {
+    setSelectedLanguage(language);
+  };
+
   return (
     <div className="flex flex-col " >
-      <Navbar/>
+      <Navbar onLanguageChange={handleLanguageChange} />
       <div className="hidden relative py-6 sm:flex flex-col justify-center">
-      <EmblaCarousel images={imagesDesktop} />
-        
+        <EmblaCarousel images={imagesDesktop} />
+
       </div>
       <div className="sm:hidden relative flex flex-row my-4">
-      <EmblaCarousel images={images} />
-        
+        <EmblaCarousel images={images} />
+
       </div>
       <div className="hidden relative py-6 sm:flex flex-col justify-center">
-      
+
         <MiraHotelsDesktop />
       </div>
       <div className="sm:hidden relative flex flex-row my-4">
-      
+
         <MiraHotels />
       </div>
 
       <div className="flex items-center justify-center mb-5 mt-10">
-        <h2 className="text-4xl text-slate-600 "> OUR AWARDS </h2>
+        <h2 className="text-4xl text-slate-600 mt-5"> OUR AWARDS </h2>
       </div>
-
-      
-      <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
-      <AwardDesktop images={imageAwards} />
-      </div>
-      <div className="sm:hidden relative flex items-center my-4 justify-center">
-      <AwardCarousel images={imageAwards} />
-      </div>
-
 
 
       <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
-      <ContactDesktop />
+        <AwardDesktop images={imageAwards} />
       </div>
       <div className="sm:hidden relative flex items-center my-4 justify-center">
-      <Contact />
+        <AwardCarousel images={imageAwards} />
       </div>
-      
 
-      
+
+
+      <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
+        <ContactDesktop />
+      </div>
+      <div className="sm:hidden relative flex items-center my-4 justify-center">
+        <Contact />
+      </div>
+
+
+
       <div className="hidden relative py-6 sm:flex flex-col justify-center">
         <FooterDesktop />
       </div>

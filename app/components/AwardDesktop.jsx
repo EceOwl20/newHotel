@@ -25,14 +25,14 @@ export function AwardDesktop({ images }) {
   }, [emblaApi]);
 
   return (
-    <div className="flex flex-col mx-80">
-      <div className="overflow-hidden relative h-100 " ref={emblaRef}>
+    <div className="flex flex-col mx-[300px]">
+      <div className="overflow-hidden relative h-[500px] " ref={emblaRef}>
         <div className="flex grid-flow-col transition-transform ease-out duration-500">
           {images.map((image, index) => (
             <div className="flex-[0_0_auto] px-2" key={index} >
               <img
                 height={250}
-                width={400}
+                width={350}
                 layout="responsive"
                 style={{ objectFit: "contain" }}
                 src={image}

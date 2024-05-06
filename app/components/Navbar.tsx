@@ -14,12 +14,15 @@ import {
 import { FaPhoneAlt } from "react-icons/fa";
 import * as Separator from "@radix-ui/react-separator";
 import Image from 'next/image'
+import { fetchData } from '../data';
 
+type LanguageChangeHandler = (language: string) => void;
 //color rgb(33, 37, 41)
-const Navbar = () => {
+const Navbar = ({ onLanguageChange }) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false); //mobile drawer's visibility
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState('TR');
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -28,28 +31,41 @@ const Navbar = () => {
         setIsDrawerOpen(!isDrawerOpen);
     };
 
+    const handleLanguageChange = async (language: string) => {
+        setSelectedLanguage(language);
+        const languageText = await fetchData(textId, language);
+        onLanguageChange(language);
+        // Dilin metnini kullanarak sayfayı güncelleyin
+    };
+
     return (
-        <nav className="flex fixed bg-lime-900 z-50 w-full">
+        <nav className="flex fixed bg-lime-900 z-30 w-full">
             <div className=" mx-auto min-w-full px-2 sm:px-6 lg:px-8 ">
                 <div className="relative flex h-24 items-center justify-between ">
-                    <div className="flex absolute right-0 sm:left-20">
+                    <div className="relative  left-[150px] z-50  text-white text-xl ">
                         <DropdownMenu.Root>
                             <DropdownMenu.Trigger>
                                 <Button
                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                    className="inline-flex items-center right-0 ml-14 pr-1 text-xl text-white bg-lime-900 ">EN
+                                    className=" inline-flex flex-row z-50 items-center">
+                                    {selectedLanguage === 'TR' ? 'Türkçe' :
+                                        selectedLanguage === 'EN' ? 'English' :
+                                            selectedLanguage === 'RU' ? 'Русский' :
+                                                selectedLanguage === 'DE' ? 'Deutsch' : ''}
                                     <TriangleDownIcon />
                                 </Button>
-
                             </DropdownMenu.Trigger>
                             <DropdownMenu.Portal>
-                                <DropdownMenu.Content className="bg-lime-900 px-3 py-5">
+                                <DropdownMenu.Content className="bg-lime-900 px-3 py-5 text- relative z-50 top-[-5px]">
                                     {["TR", "RU", "DE"].map((lang, index) => (
                                         <DropdownMenu.Item
                                             key={index}
-                                            className="group text-white hover:bg-white hover:text-lime-900"
-                                        >
-                                            {lang}
+                                            className="group text-white hover:bg-white text-xl hover:text-lime-900"
+                                            onClick={() => handleLanguageChange(lang)}>
+                                            {lang === 'TR' ? 'Türkçe' :
+                                                lang === 'EN' ? 'English' :
+                                                    lang === 'RU' ? 'Русский' :
+                                                        lang === 'DE' ? 'Deutsch' : ''}
                                         </DropdownMenu.Item>
                                     ))}
                                 </DropdownMenu.Content>
@@ -62,7 +78,7 @@ const Navbar = () => {
                         </span>
                     </div>
 
-                    <div className=" flex absolute inset-y-0 left-0 items-center justify-start lg:left-0">
+                    <div className=" flex absolute inset-y-0 left-0 items-center justify-start lg:left-0 z-45">
                         <Button
                             onClick={toggleSidebar}
                             className=" inline-flex items-center text-lime-900 bg-lime-900 " >
@@ -140,3 +156,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

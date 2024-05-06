@@ -8,8 +8,8 @@ import * as Separator from "@radix-ui/react-separator";
 
 const FooterDesktop = () => {
   return (
-    <footer className="bg-[url('https://miramarehotels.com/assets/frontend/images/footer/footer-desktop.webp')]">
-      <div className="flex flex-col w-full ">
+    <footer className="bg-[url('https://miramarehotels.com/assets/frontend/images/footer/footer-desktop.webp')] brightness-50 ">
+      <div className="flex flex-col w-full">
         <div className="flex text-white gap-20 justify-between">
           <div
             className=" flex-col items-start justify-start mx-4 gap-10 mt-5
@@ -91,7 +91,7 @@ type FooterColumnProps = {
 const FooterColumn = ({ title, children }: FooterColumnProps) => {
   return (
     <div className="flex-col items-center justify-center gap-5 text-center">
-      <h4 className="bold-18 whitespace-nowrap">{title}</h4>
+      <h4 className="bold-15 whitespace-nowrap">{title}</h4>
       {children}
     </div>
   );
