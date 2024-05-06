@@ -2,37 +2,40 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const fetchData = async (textId, language) => {
+export const fetchTextsByLanguage = async (language) => {
   try {
-    //Belirli bir metnin ID'sine göre metni çek
-    const texts = await prisma.text.findUnique({
-      where: {
-        id: textId,
+    const texts = await prisma.text.findMany({
+      select: {
+        id: true,
+        textTr: true,
+        textEn: true,
+        textRu: true,
+        textDe: true,
       },
     });
-    // Seçilen dilin metin sütununu belirle
-    let languageColumn;
+    console.log(texts);
+    // Filter the texts based on the selected language
+    let filteredTexts = [];
     switch (language) {
-        case "TR":
-        languageColumn="textTr";
+      case "tr":
+        filteredTexts = texts.map((text) => text.textTr);
         break;
-        case 'EN':
-            languageColumn = 'textEn';
-            break;
-          case 'RU':
-            languageColumn = 'textRu';
-            break;
-          case 'DE':
-            languageColumn = 'textDe';
-            break;
-          default:
-            languageColumn = 'textTr';
+      case "en":
+        filteredTexts = texts.map((text) => text.textEn);
+        break;
+      case "ru":
+        filteredTexts = texts.map((text) => text.textRu);
+        break;
+      case "de":
+        filteredTexts = texts.map((text) => text.textDe);
+        break;
+      default:
+        filteredTexts = texts.map((text) => text.textEn);
+        break;
     }
-    return texts[languageColumn];
-
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to fetch data");
-    return null;
+    return filteredTexts;
+  } catch (error) {
+    console.error("Error fetching texts:", error);
+    return [];
   }
 };

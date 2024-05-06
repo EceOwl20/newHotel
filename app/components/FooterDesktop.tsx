@@ -8,9 +8,10 @@ import * as Separator from "@radix-ui/react-separator";
 
 const FooterDesktop = () => {
   return (
-    <footer className="bg-[url('https://miramarehotels.com/assets/frontend/images/footer/footer-desktop.webp')] brightness-50 ">
-      <div className="flex flex-col w-full">
-        <div className="flex text-white gap-20 justify-between">
+    <footer className="bg-[url('https://miramarehotels.com/assets/frontend/images/footer/footer-desktop.webp')] relative">
+      <div className="bg-black/50 absolute inset-0 z-[1]"></div>
+      <div className="flex flex-col w-full z-10 ">
+        <div className="flex text-white gap-20 z-10 justify-between">
           <div
             className=" flex-col items-start justify-start mx-4 gap-10 mt-5
                      text-white text-end text-lg "
@@ -24,8 +25,8 @@ const FooterDesktop = () => {
             className="flex justify-center items-center"
             src="https://miramarehotels.com/assets/frontend/images/header/miramare-logo.svg"
             alt="logo"
-            width={300}
-            height={300}
+            width="auto"
+            height="auto"
           />
 
           <div className="  p-5 flex-col justify-end text-center text-white">
@@ -51,14 +52,14 @@ const FooterDesktop = () => {
             </div>
           </div>
         </div>
-        <Separator.Root className="relative bg-white h-[1px] mx-20 w-110" />
-        <div className="flex flex-col items-center gap-15  text-white">
+        <Separator.Root className="relative bg-white h-[1px] mx-20 w-110 z-10" />
+        <div className="flex flex-col items-center gap-15 z-10  text-white">
           <div
             className="flex flex-wrap gap-10 justify-center mt-2
                      text-white text-center text-xl font-semibold"
           >
             {FOOTER_LINK.map((columns) => (
-              <FooterColumn title={columns.title}>
+              <FooterColumn title={columns.title} key={columns.links}>
                 <ul className=" flex flex-col gap-1 text-base">
                   {columns.links.map((link) => (
                     <Link href="/" key={link}>
@@ -78,7 +79,7 @@ const FooterDesktop = () => {
         <p className="regular-14 text-xs text-center text-gray-500">
           Powered by DGTLFACE | All rights reserved
         </p>
-    </div>
+      </div>
     </footer>
   );
 };
@@ -98,4 +99,4 @@ const FooterColumn = ({ title, children }: FooterColumnProps) => {
 };
 
 export default FooterDesktop;
-/** */
+

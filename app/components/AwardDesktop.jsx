@@ -60,6 +60,7 @@ export function AwardDesktop({ images }) {
             <div className="flex items-center justify-center gap-3">
               {images.map((_, i) => (
                 <div
+                key={i}
                   className={`transition-all mt-8 w-4 h-4 bg-slate-300 rounded-full ${
                     curr === i ? "p-2" : "bg-slate-600"
                   }`}

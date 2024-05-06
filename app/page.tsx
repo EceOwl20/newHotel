@@ -46,16 +46,12 @@ const imageAwards = [
 
 ]
 
-export default function Home() {
-  const [selectedLanguage, setSelectedLanguage] = useState('TR');
 
-    const handleLanguageChange = (language:string) => {
-    setSelectedLanguage(language);
-  };
+export default function Home() {
 
   return (
     <div className="flex flex-col " >
-      <Navbar onLanguageChange={handleLanguageChange} />
+      <Navbar />
       <div className="hidden relative py-6 sm:flex flex-col justify-center">
         <EmblaCarousel images={imagesDesktop} />
 
@@ -108,8 +104,16 @@ export default function Home() {
 
     </div>
 
+
   );
+
+
 }
+
+
+
+
+
 /**<div className="hidden relative py-6 sm:flex flex-col justify-center">
       <EmblaCarouselDesktop images={imagesDesktop} />
       </div>

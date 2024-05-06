@@ -31,7 +31,7 @@ const Footer = () => {
                     <div className='flex flex-wrap gap-10 justify-center mt-5
                      text-white text-center text-sm'>
                         {FOOTER_LINK.map((columns) => (
-                            <FooterColumn title={columns.title}>
+                            <FooterColumn title={columns.title} key={columns.links}>
                                 <ul className=' flex flex-col gap-1'>
                                     {columns.links.map((link) => (
                                         <Link href="/" key={link}>
@@ -72,18 +72,3 @@ const FooterColumn = ({ title, children }: FooterColumnProps) => {
 export default Footer
 
 
-//https://miramarehotels.com/assets/frontend/images/footer/phone-footer.webp
-/**<div className='flex flex-col gap-5'>
-                            <FooterColumn title={FOOTER_CONTACT_INFO.title}>
-                                {FOOTER_CONTACT_INFO.links.map((link) => (
-                                    <Link href="/" key={link.label} className='flex gap-4 md:flex-col lg:flex-row'>
-                                        <p className='whitespace-nowrap'>
-                                            {link.label}:
-                                        </p>
-                                        <p className='medium-14 whitespace-nowrap text-blue-400' >
-                                            {link.value}
-                                        </p>
-                                    </Link>
-                                ))}
-                            </FooterColumn>
-                        </div> */
