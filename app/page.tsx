@@ -2,15 +2,20 @@
 
 import Navbar from "./components/Navbar";
 import { EmblaCarousel } from "./components/EmblaCarousel";
-import MiraHotels from "./MiraHotels";
+import MiraHotels from "./components/MiraHotels";
 import FooterMobil from "./components/FooterMobil";
 import { AwardCarousel } from "./components/AwardCarousel";
 import Contact from "./components/Contact";
 import FooterDesktop from "./components/FooterDesktop";
-import MiraHotelsDesktop from "./MiraHotelsDesktop";
+import MiraHotelsDesktop from "./components/MiraHotelsDesktop";
 import ContactDesktop from "./components/ContactDesktop";
 import { AwardDesktop } from "./components/AwardDesktop";
 import React, { useState } from 'react';
+import NavbarServer from "./api/text/NavbarServer";
+import MiramareVideo from "./components/MiramareVideo";
+import Provider from "./components/Provider";
+import HomePage from "./FetchPage"
+import { fetchTextsByLanguage } from "./lib/data";
 
 
 const images = [
@@ -47,11 +52,17 @@ const imageAwards = [
 ]
 
 
-export default function Home() {
+export default async function Home() {
+
+  // const data = fetchTextsByLanguage(1, 'RU')
+  // console.log('====================================');
+  // console.log(data);
+
 
   return (
     <div className="flex flex-col " >
-      <Navbar />
+
+
       <div className="hidden relative py-6 sm:flex flex-col justify-center">
         <EmblaCarousel images={imagesDesktop} />
 
@@ -81,25 +92,22 @@ export default function Home() {
         <AwardCarousel images={imageAwards} />
       </div>
 
+      <div className="my-10">
+        <MiramareVideo />
+      </div>
 
+      <div className="my-20 ">
+        
+      
+      </div>
 
       <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
         <ContactDesktop />
+
       </div>
       <div className="sm:hidden relative flex items-center my-4 justify-center">
         <Contact />
       </div>
-
-
-
-      <div className="hidden relative py-6 sm:flex flex-col justify-center">
-        <FooterDesktop />
-      </div>
-      <div className="sm:hidden relative flex flex-row my-4">
-        <FooterMobil />
-
-      </div>
-
 
 
     </div>
@@ -109,15 +117,3 @@ export default function Home() {
 
 
 }
-
-
-
-
-
-/**<div className="hidden relative py-6 sm:flex flex-col justify-center">
-      <EmblaCarouselDesktop images={imagesDesktop} />
-      </div>
-      <div className="sm:hidden relative flex flex-row">
-        <EmblaCarousel images={images} />
-
-      </div> */

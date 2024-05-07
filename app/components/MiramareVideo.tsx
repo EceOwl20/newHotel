@@ -1,12 +1,26 @@
 import React from 'react'
+import { CgPlayButtonO } from "react-icons/cg";
+import { Button, Text, Blockquote } from "@radix-ui/themes";
+import * as Separator from "@radix-ui/react-separator";
 
 const MiramareVideo = () => {
   return (
-    <div className='relative w-full  aspect-w-16 aspect-h-9'>
-      <video id="" className='absolute inset-0 w-full'>
-        <source src='/videos/miramare.mp4' type='video/mp4' />
-      </video>
-      <img src="https://miramarehotels.com/assets/frontend/images/homepage/homepage-video-background.webp" data-src="https://miramarehotels.com/assets/frontend/images/homepage/homepage-video-background.webp" className='absolute inset-0 w-full h-full object-cover cursor-pointer'/>
+    <div className="relative w-full h-[800px] bg-[url('https://miramarehotels.com/assets/frontend/images/homepage/homepage-video-background.webp')] " >
+      <div className='bg-black/50 absolute inset-0 z-[1] '></div>
+     
+      <div className='absolute inset-0 flex items-center justify-center z-10'>
+        <button className=' flex '>
+          <CgPlayButtonO className='w-20 h-20  text-white' />
+        </button>
+      </div>
+
+      <div className='absolute left-[70%] top-[40%] text-white text-center z-10'>
+        <h2 className='text-3xl font-medium justify-end '>DREAM VACATION</h2>
+        <Separator.Root className='h-[1px] bg-slate-400 z-10 my-3'></Separator.Root>
+        <Text className='text-lg '>Unleash your inner adventurer at our vibrant hotels in the<br></br> heart of Side, Antalya. Experience the exhilarating energy of <br></br>this lively area.</Text>
+      </div>
+      
+
     </div>
   )
 }

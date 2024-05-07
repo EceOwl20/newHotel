@@ -26,7 +26,7 @@ export function EmblaCarousel({ images }) {
       <div className="flex grid-flow-col">
         {images.map((image, index) => (
           <div className="flex-[0_0_auto] " key={index}>
-            <img src={image} alt={`Slide ${index + 1}`} />
+            <img src={image} style={{ objectFit: "contain" }} width="auto" height="auto"  alt={`Slide ${index + 1}`} />
           </div>
         ))}
       </div>

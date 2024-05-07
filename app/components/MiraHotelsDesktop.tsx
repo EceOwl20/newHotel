@@ -2,8 +2,13 @@
 import { Heading, Text, Blockquote, Button, Link } from "@radix-ui/themes";
 import React from "react";
 import * as Separator from "@radix-ui/react-separator";
+import { fetchTextsByLanguage } from "../lib/data";
 
 const MiraHotelsDesktop = () => {
+
+    const textHotels=fetchTextsByLanguage(5,"EN")
+
+
     return (
         <div className="flex flex-col mt-5">
             <div className="flex flex-col justify-center items-center mx-5">

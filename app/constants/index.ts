@@ -55,10 +55,11 @@ export const FOOTER_LINK = [
 export const SOCIALS = {
   title: "Social",
   links: [
+    "https://miramarehotels.com/assets/frontend/images/common/facebook-f.svg",
     "https://miramarehotels.com/assets/frontend/images/common/insta-f.svg",
     "https://miramarehotels.com/assets/frontend/images/common/linkedin-f.svg",
     "https://miramarehotels.com/assets/frontend/images/common/youtube-f.svg",
-    "https://miramarehotels.com/assets/frontend/images/header/booking-header-grey.svg",
+    "https://miramarehotels.com/assets/frontend/images/footer/booking-footer-white.svg"
   ],
 };
 

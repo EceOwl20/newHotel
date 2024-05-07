@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { FOOTER_LINK, SOCIALS } from "../constants";
-import { Heading, Text } from "@radix-ui/themes";
+import { Text } from "@radix-ui/themes";
 import * as Separator from "@radix-ui/react-separator";
 
 const FooterDesktop = () => {
@@ -39,12 +39,12 @@ const FooterDesktop = () => {
                 <ul className="regular-14 flex gap-8 justify-between ">
                   {SOCIALS.links.map((link) => (
                     <Link href="/" key={link}>
-                      <img src={link} alt="logo" width={25} height={25} />
+                      <img src={link} alt="logo" width="auto" />
                     </Link>
                   ))}
                 </ul>
                 <Link href="/" className="text-white text-sm">
-                  <p className="mt-5 text-base">
+                  <p className="mt-5 text-base hover:text-sky-700">
                     Social Platforms Privacy Policy
                   </p>
                 </Link>
@@ -56,13 +56,13 @@ const FooterDesktop = () => {
         <div className="flex flex-col items-center gap-15 z-10  text-white">
           <div
             className="flex flex-wrap gap-10 justify-center mt-2
-                     text-white text-center text-xl font-semibold"
+                     text-white text-center text-xl font-semibold "
           >
             {FOOTER_LINK.map((columns) => (
-              <FooterColumn title={columns.title} key={columns.links}>
-                <ul className=" flex flex-col gap-1 text-base">
+              <FooterColumn title={columns.title} key={columns.links} >
+                <ul className=" flex flex-col gap-1 text-base ">
                   {columns.links.map((link) => (
-                    <Link href="/" key={link}>
+                    <Link className="hover:text-slate-500" href="/" key={link}>
                       {link}
                     </Link>
                   ))}
@@ -72,11 +72,11 @@ const FooterDesktop = () => {
           </div>
         </div>
       </div>
-      <div className="border mt-7 bg-black">
-        <p className="regular-14 text-xs  text-center text-gray-500">
+      <div className="border mt-7 bg-slate-700 z-10 items-center">
+        <p className="regular-14 text-s  text-start text-white">
           Miramare Hotels Zafer Turizm Otelcilik İnşaat A.Ş.
         </p>
-        <p className="regular-14 text-xs text-center text-gray-500">
+        <p className="regular-14 text-s text-end text-white z-10">
           Powered by DGTLFACE | All rights reserved
         </p>
       </div>

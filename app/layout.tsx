@@ -1,6 +1,12 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import NavbarServer from "./api/text/NavbarServer";
+import Navbar from "./components/Navbar";
+import FooterMobil from "./components/FooterMobil";
+import FooterDesktop from "./components/FooterDesktop";
+import Provider from './components/Provider';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +23,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        
+      <Navbar>
+        <Provider children={undefined} />
+      </Navbar>
         {children}
-        </body>
+        <div className="hidden relative py-6 sm:flex flex-col justify-center">
+        <FooterDesktop />
+      </div>
+      <div className="sm:hidden relative flex flex-row my-4">
+        <FooterMobil />
+
+      </div>
+      </body>
     </html>
   );
 }
