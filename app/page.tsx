@@ -1,21 +1,19 @@
-'use client';
-
 import Navbar from "./components/Navbar";
 import { EmblaCarousel } from "./components/EmblaCarousel";
 import MiraHotels from "./components/MiraHotels";
 import FooterMobil from "./components/FooterMobil";
 import { AwardCarousel } from "./components/AwardCarousel";
 import Contact from "./components/Contact";
-import FooterDesktop from "./components/FooterDesktop";
 import MiraHotelsDesktop from "./components/MiraHotelsDesktop";
 import ContactDesktop from "./components/ContactDesktop";
 import { AwardDesktop } from "./components/AwardDesktop";
-import React, { useState } from 'react';
-import NavbarServer from "./api/text/NavbarServer";
+
 import MiramareVideo from "./components/MiramareVideo";
 import Provider from "./components/Provider";
 import HomePage from "./FetchPage"
 import { fetchTextsByLanguage } from "./lib/data";
+import TextManager from "./api/TextFetcher";
+
 
 
 const images = [
@@ -52,7 +50,7 @@ const imageAwards = [
 ]
 
 
-export default async function Home() {
+export default function Home() {
 
   // const data = fetchTextsByLanguage(1, 'RU')
   // console.log('====================================');
@@ -97,8 +95,8 @@ export default async function Home() {
       </div>
 
       <div className="my-20 ">
-        
-      
+
+
       </div>
 
       <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">

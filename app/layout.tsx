@@ -8,6 +8,7 @@ import FooterMobil from "./components/FooterMobil";
 import FooterDesktop from "./components/FooterDesktop";
 import Provider from './components/Provider';
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,12 +21,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Navbar>
-        <Provider children={undefined} />
-      </Navbar>
+      <Navbar/>
+       
         {children}
         <div className="hidden relative py-6 sm:flex flex-col justify-center">
         <FooterDesktop />

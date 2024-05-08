@@ -42,10 +42,10 @@ useEffect(() => {
   return () => emblaApi.off("select", onSelect);
 }, [emblaApi, onSelect]);
 
-useEffect(() => {
-  if (!emblaApi) return;
-  curr !== emblaApi.selectedScrollSnap() && emblaApi.scrollTo(curr);
-}, [curr, emblaApi]);
+// useEffect(() => {
+//   if (!emblaApi) return;
+//   curr !== emblaApi.selectedScrollSnap() && emblaApi.scrollTo(curr);
+// }, [curr, emblaApi]);
 
 
 

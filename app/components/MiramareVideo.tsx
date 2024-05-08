@@ -1,7 +1,9 @@
+"use client"
 import React from 'react'
 import { CgPlayButtonO } from "react-icons/cg";
 import { Button, Text, Blockquote } from "@radix-ui/themes";
 import * as Separator from "@radix-ui/react-separator";
+import Link from "next/link";
 
 const MiramareVideo = () => {
   return (
@@ -9,9 +11,9 @@ const MiramareVideo = () => {
       <div className='bg-black/50 absolute inset-0 z-[1] '></div>
      
       <div className='absolute inset-0 flex items-center justify-center z-10'>
-        <button className=' flex '>
-          <CgPlayButtonO className='w-20 h-20  text-white' />
-        </button>
+        <Link className=' flex ' href="https://www.youtube.com/embed/1Er9UedpVLI?si=--qNDHNSmLIGsRpK">
+          <CgPlayButtonO className='w-20 h-20  text-white'/>
+        </Link>
       </div>
 
       <div className='absolute left-[70%] top-[40%] text-white text-center z-10'>

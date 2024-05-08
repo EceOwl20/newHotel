@@ -6,7 +6,7 @@ import { fetchTextsByLanguage } from "../lib/data";
 
 const MiraHotelsDesktop = () => {
 
-    const textHotels=fetchTextsByLanguage(5,"EN")
+    //const textHotels=fetchTextsByLanguage(5,"EN")
 
 
     return (
@@ -29,7 +29,7 @@ const MiraHotelsDesktop = () => {
                     <Heading className="text-slate-800 text-xl font-semibold">MIRAMARE BEACH</Heading>
                     <Text className="text-slate-400 text-base mb-2 font-semibold"> Side / Antalya </Text>
                     <img src="https://miramarehotels.com/assets/frontend/images/homepage/hotels-display-1.webp" style={{ objectFit: "contain" }}></img>
-                    <Button  highContrast className='absolute border-2 items-end border-white bg-transparent flex-grow mb-3  w-20 h-10 text-white text-center text-sm hover:bg-white hover:text-blue-400'> Visit Page </Button>
+                    <Button highContrast className='absolute border-2 items-end border-white bg-transparent flex-grow mb-3  w-20 h-10 text-white text-center text-sm hover:bg-white hover:text-blue-400'> Visit Page </Button>
                 </div>
 
 
@@ -37,7 +37,7 @@ const MiraHotelsDesktop = () => {
                     <Heading className="text-slate-800 text-xl text-center font-semibold">MIRAMARE QUEEN</Heading>
                     <Text className="text-base text-slate-400 mb-2 font-semibold"> Side / Antalya </Text>
                     <img src="https://miramarehotels.com/assets/frontend/images/homepage/hotels-display-2.webp" style={{ objectFit: "cover" }}></img>
-                    <Button  highContrast className='absolute border-2 border-white bg-transparent flex-grow mb-3 w-20 h-10 text-white text-center text-sm hover:bg-white hover:text-blue-400'> Visit Page </Button>
+                    <Button highContrast className='absolute border-2 border-white bg-transparent flex-grow mb-3 w-20 h-10 text-white text-center text-sm hover:bg-white hover:text-blue-400'> Visit Page </Button>
 
                 </div>
 

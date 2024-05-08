@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { fetchTextsByLanguage } from "../../lib/data";
+import TextFetcher from "../TextFetcher";
 
 const NavbarServer = () => {
-  const [language, setLanguage] = useState("en");
-  const [text1, setText1] = useState("");
-  const [text2, setText2] = useState("");
-  const [text3, setText3] = useState("");
-  const [texts, setTexts] = useState([]);
+  const [texts, setTexts] = useState({});
 
   useEffect(() => {
-    fetchTexts("textId1", setText1);
-    fetchTexts("textId2", setText2);
-    fetchTexts("textId3", setText3);
-  }, [language]);
+    fetchTexts();
+  }, []);
 
-  const fetchTexts = async (textId, setText) => {
-    const fetchedTexts = await fetchTextsByLanguage(textId, language);
-    setText(fetchedTexts);
-  };
+  const fetchTexts = async () => {
+    const textIds = [1, 2, 3, 4]; // Define text IDs to fetch
+    const languages = ["EN"]; // Define languages to fetch
+    const fetchedTexts = {};
 
-  const handleLanguageChange = (selectedLanguage) => {
-    setLanguage(selectedLanguage);
+    for (const textId of textIds) {
+      fetchedTexts[textId] = {};
+      for (const language of languages) {
+        fetchedTexts[textId][language] =
+          await TextFetcher.fetchTextByIdAndLanguage(textId, language);
+      }
+    }
+
+    setTexts(fetchedTexts);
   };
 
   return (
     <div>
-      <p>{text1}</p>
+      <p className="bg-black ">{texts[1]?.EN}</p>
     </div>
   );
 };

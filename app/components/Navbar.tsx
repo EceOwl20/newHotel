@@ -6,19 +6,42 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { TextAlignJustifyIcon, TriangleDownIcon, CrossCircledIcon, } from "@radix-ui/react-icons";
 import { FaPhoneAlt } from "react-icons/fa";
 import * as Separator from "@radix-ui/react-separator";
-import Image from 'next/image'
 import { fetchTextsByLanguage } from "../lib/data";
+import TextFetcher from "../api/TextFetcher";
 
 
 
-const Navbar = ({ children }) => {
+const Navbar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false); //mobile drawer's visibility
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
+
+    // const [texts, setTexts] = useState({});
+
+    // useEffect(() => {
+    //     fetchTexts();
+    // }, []);
+
+    // const fetchTexts = async () => {
+    //     const textIds = [1, 2, 3, 4]; // Define text IDs to fetch
+    //     const languages = ["EN"]; // Define languages to fetch
+    //     const fetchedTexts = {};
+
+    //     for (const textId of textIds) {
+    //         fetchedTexts[textId] = {};
+    //         for (const language of languages) {
+    //             fetchedTexts[textId][language] = await TextFetcher.fetchTextByIdAndLanguage(textId, language);
+    //         }
+    //     }
+
+    //     setTexts(fetchedTexts);
+    // };
+
 
 
     // const textMenu = fetchTextsByLanguage(1, "EN");
@@ -57,12 +80,12 @@ const Navbar = ({ children }) => {
                     </div>
 
                     <div className=" flex absolute inset-y-0 left-0 items-center justify-start lg:left-0 z-45">
-                        <TextAlignJustifyIcon className="w-9 h-9 text-white" />
+
                         <Button
                             onClick={toggleSidebar}
                             className=" inline-flex items-center text-lime-900 bg-lime-900 " >
-
-                            <Text className="lg:text-white text-xl ">Menu</Text>
+                            <TextAlignJustifyIcon className="w-9 h-9 text-white" />
+                            <Text className="lg:text-white text-xl ">MENU</Text>
                         </Button>
 
                     </div>

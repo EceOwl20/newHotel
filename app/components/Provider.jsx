@@ -2,7 +2,7 @@
 import React from 'react'
 import NavbarServer from '../api/text/NavbarServer';
 
-const Provider = ({children}) => {
+const Provider = () => {
   return (
     <NavbarServer/>
   )
