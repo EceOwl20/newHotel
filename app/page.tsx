@@ -11,8 +11,9 @@ import { AwardDesktop } from "./components/AwardDesktop";
 import MiramareVideo from "./components/MiramareVideo";
 import Provider from "./components/Provider";
 import HomePage from "./FetchPage"
-import { fetchTextsByLanguage } from "./lib/data";
+import { fetchTextsByLanguage, fetchComponents } from "./lib/data";
 import TextManager from "./api/TextFetcher";
+import MiramareVideoMobil from "./components/MiramareVideoMobil";
 
 
 
@@ -52,14 +53,16 @@ const imageAwards = [
 
 export default function Home() {
 
-  // const data = fetchTextsByLanguage(1, 'RU')
+  // const data = fetchComponents("Menu")
   // console.log('====================================');
   // console.log(data);
+  // console.log('====================================');
+  // const data1 = fetchTextsByLanguage(2, "DE")
+  // console.log(data1);
 
 
   return (
     <div className="flex flex-col " >
-
 
       <div className="hidden relative py-6 sm:flex flex-col justify-center">
         <EmblaCarousel images={imagesDesktop} />
@@ -90,13 +93,11 @@ export default function Home() {
         <AwardCarousel images={imageAwards} />
       </div>
 
-      <div className="my-10">
+      <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
         <MiramareVideo />
       </div>
-
-      <div className="my-20 ">
-
-
+      <div className="sm:hidden relative flex items-center my-4 justify-center">
+        <MiramareVideoMobil />
       </div>
 
       <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">

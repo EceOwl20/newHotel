@@ -14,9 +14,10 @@ datasource db {
 }
 
 model Text {
-  id     Int    @id @default(autoincrement())
-  textTr String @db.VarChar(255)
-  textEn String @db.VarChar(255)
-  textRu String @db.VarChar(255)
-  textDe String @db.VarChar(255)
+  id       Int    @id @default(autoincrement())
+  textTr   String @db.VarChar(255)
+  textEn   String @db.VarChar(255)
+  textRu   String @db.VarChar(255)
+  textDe   String @db.VarChar(255)
+  compName String @db.VarChar(100)
 }

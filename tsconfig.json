@@ -29,6 +29,6 @@
     "app/components/EmblaCarousel.jsx",
     "app/components/AwardCarousel.jsx",
     "app/lib/data.js"
-, "app/components/Provider.jsx", "app/api/text/NavbarServer.jsx"  ],
+, "app/components/Provider.jsx", "app/api/text/NavbarServer.jsx", "app/components/Navbar.jsx"  ],
   "exclude": ["node_modules"]
 }

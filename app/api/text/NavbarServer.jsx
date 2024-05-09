@@ -1,35 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { fetchTextsByLanguage } from "../../lib/data";
-import TextFetcher from "../TextFetcher";
+// "use client";
+// import Navbar from "../../components/Navbar";
+// import { useEffect, useState } from "react";
 
-const NavbarServer = () => {
-  const [texts, setTexts] = useState({});
+// // Function to fetch data
+// const fetchData = async () => {
+//   try {
+//     const response = await fetch("path/to/your/api");
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     return [];
+//   }
+// };
 
-  useEffect(() => {
-    fetchTexts();
-  }, []);
+// // Example component where you fetch data and pass it as props
+// const NavbarServer = () => {
+//   const [components, setComponents] = useState([]);
 
-  const fetchTexts = async () => {
-    const textIds = [1, 2, 3, 4]; // Define text IDs to fetch
-    const languages = ["EN"]; // Define languages to fetch
-    const fetchedTexts = {};
+//   useEffect(() => {
+//     const fetchAndSetData = async () => {
+//       const data = await fetchData();
+//       setComponents(data);
+//     };
 
-    for (const textId of textIds) {
-      fetchedTexts[textId] = {};
-      for (const language of languages) {
-        fetchedTexts[textId][language] =
-          await TextFetcher.fetchTextByIdAndLanguage(textId, language);
-      }
-    }
+//     fetchAndSetData();
+//   }, []);
 
-    setTexts(fetchedTexts);
-  };
+//   return (
+//     <div>
+//       {/* Pass the fetched data as props to OtherClass */}
+//       <Navbar components={components} />
+//     </div>
+//   );
+// };
 
-  return (
-    <div>
-      <p className="bg-black ">{texts[1]?.EN}</p>
-    </div>
-  );
-};
-
-export default NavbarServer;
+// export default NavbarServer;

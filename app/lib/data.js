@@ -1,40 +1,51 @@
 import prisma from "@/prisma/client";
+//import fs from "promise-fs";
+//const fs = require("fs");
 
-export const fetchTextsByLanguage = async (textId, language) => {
+export const fetchTextsByLanguage = async (compName) => {
   try {
-    const text = await prisma.text.findUnique({
+    let text = await prisma.text.findFirst({
       where: {
-        id: textId,
+        compName: compName,
+      },
+      select: {
+        textTr: true,
       },
     });
-    console.log(`Text found:`, text);
     if (!text) {
-      console.error(`Text with textId ${textId} not found.`);
-      return [];
+      console.error(`Text with compName ${compName} not found.`);
+      return {}; // Return empty object or handle the case when no text is found
     }
+    console.log(`Text found for compName ${compName}`);
+    const jsonData = JSON.parse(text.textTr)
+    return jsonData;
+  } catch (error) {
+    console.error("Error fetching texts:", error);
+    return {};
+  }
+};
 
-    let selectedText = "";
-    switch (language) {
-      case "TR":
-        selectedText = text.textTr;
-        break;
-      case "EN":
-        selectedText = text.textEn;
-        break;
-      case "DE":
-        selectedText = text.textDe;
-        break;
-      case "RU":
-        selectedText = text.textRu;
-        break;
-    }
-    console.log("Selected text:", selectedText);
-    return selectedText;
+//---------------------------------
+
+export const fetchComponents = async (compName) => {
+  try {
+    const text = await prisma.text.findMany({
+      where: {
+        compName: compName,
+      },
+    });
+
+    // const jsonData = JSON.stringify(text, null, 2);
+    // console.log("Data converted to JSON:", jsonData);
+
+    return text;
   } catch (error) {
     console.error("Error fetching texts:", error);
     return "";
   }
 };
+
+//----------------------------------------------
 
 export const fetchTextsByLanguage2 = async (textId, language) => {
   try {
@@ -48,3 +59,31 @@ export const fetchTextsByLanguage2 = async (textId, language) => {
     return "";
   }
 };
+
+//----------------------------------------------
+
+export async function createNewComponent(
+  id,
+  textTr,
+  textEn,
+  textRu,
+  textDe,
+  compName
+) {
+  try {
+    const newData = await prisma.text.create({
+      data: {
+        id: id,
+        textTr: textTr,
+        textEn: textEn,
+        textRu: textRu,
+        textDe: textDe,
+        compName: compName,
+      },
+    });
+    return { newData };
+  } catch (error) {
+    console.log(error);
+    return { error };
+  }
+}

@@ -14,14 +14,14 @@ const Footer = () => {
                         <div className='bg-black/50 absolute inset-0 z-[1]'></div>
                         <img className='z-10' src="https://miramarehotels.com/assets/frontend/images/header/miramare-logo.svg" alt="logo" width={250} height={250} style={{objectFit: "contain"}} />
                         <Link href="/" className='text-white text-xs mt-5 z-10'>
-                            <p >Social Platforms Privacy Policy</p>
+                            <p className='hover:text-sky-700 mt-2 text-xs' >Social Platforms Privacy Policy</p>
                         </Link>
                         <div className='flex flex-col gap-5 mb-5 text-lime-900 z-10'>
                             <FooterColumn title={SOCIALS.title}>
                                 <ul className='regular-14 flex gap-4 '>
                                     {SOCIALS.links.map((link) => (
                                         <Link href="/" key={link}>
-                                            <img src={link} alt="logo" width={15} height={15} />
+                                            <img src={link} alt="logo" width="auto" />
                                         </Link>
                                     ))}
                                 </ul>
@@ -35,7 +35,7 @@ const Footer = () => {
                             <FooterColumn title={columns.title} key={columns.links}>
                                 <ul className=' flex flex-col gap-1'>
                                     {columns.links.map((link) => (
-                                        <Link href="/" key={link}>
+                                        <Link className="hover:text-slate-500" href="/" key={link}>
                                             {link}
                                         </Link>
                                     ))}
