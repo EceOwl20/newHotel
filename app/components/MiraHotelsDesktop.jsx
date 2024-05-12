@@ -4,16 +4,18 @@ import React from "react";
 import * as Separator from "@radix-ui/react-separator";
 import { fetchTextsByLanguage } from "../lib/data";
 
-const MiraHotelsDesktop = () => {
+const MiraHotelsDesktop = async ({translations}) => {
 
-    //const textHotels=fetchTextsByLanguage(5,"EN")
+    
+    const hotel = translations.mirahotel;
+
 
 
     return (
         <div className="flex flex-col mt-5">
             <div className="flex flex-col justify-center items-center mx-5">
                 <Heading className="text-slate-800 text-4xl justify-center items-center text-center my-8">
-                    MIRAMARE HOTELS
+                    {hotel}
                 </Heading>
                 <p className="text-slate-400 text-lg text-center">
                     Experience the magnificence of the Miramare hotel chain an oasis on

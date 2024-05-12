@@ -1,23 +1,43 @@
 import prisma from "@/prisma/client";
-//import fs from "promise-fs";
-//const fs = require("fs");
+import Cookies from 'js-cookie';
 
-export const fetchTextsByLanguage = async (compName) => {
+export const fetchTextsByLanguage = async (compName,language) => {
+    
+  let column;
+  switch (language) {
+    case 'EN':
+      column = 'textEn';
+      break;
+    case 'TR':
+      column = 'textTr';
+      break;
+    case 'RU':
+      column = 'textRu';
+      break;
+    case 'DE':
+      column = 'textDe';
+      break;
+    // Add more cases as needed
+    default:
+      console.error(`Unsupported language: ${language}`);
+      return {};
+  }
+
   try {
     let text = await prisma.text.findFirst({
       where: {
         compName: compName,
       },
       select: {
-        textTr: true,
+        column: true,
       },
     });
     if (!text) {
       console.error(`Text with compName ${compName} not found.`);
-      return {}; // Return empty object or handle the case when no text is found
+      return {}; // Return empty object 
     }
-    console.log(`Text found for compName ${compName}`);
-    const jsonData = JSON.parse(text.textTr)
+
+    const jsonData = JSON.parse(text.language);
     return jsonData;
   } catch (error) {
     console.error("Error fetching texts:", error);

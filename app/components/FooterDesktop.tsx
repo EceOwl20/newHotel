@@ -6,7 +6,7 @@ import { FOOTER_LINK, SOCIALS } from "../constants";
 import { Text } from "@radix-ui/themes";
 import * as Separator from "@radix-ui/react-separator";
 
-const FooterDesktop = () => {
+const FooterDesktop = ({language}) => {
   return (
     <footer className="bg-[url('https://miramarehotels.com/assets/frontend/images/footer/footer-desktop.webp')] relative">
       <div className="bg-black/50 absolute inset-0 z-[1]"></div>

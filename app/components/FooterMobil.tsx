@@ -5,7 +5,7 @@ import React from 'react'
 import { FOOTER_LINK, SOCIALS } from '../constants'
 
 
-const Footer = () => {
+const Footer = ({language}) => {
     return (
         <footer className=' bg-lime-900'>
             <div className='padding-container justify-center text-center max-container flex w-full flex-col gap-14'>

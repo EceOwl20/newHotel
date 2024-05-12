@@ -1,7 +1,5 @@
-import Navbar from "./components/Navbar";
 import { EmblaCarousel } from "./components/EmblaCarousel";
 import MiraHotels from "./components/MiraHotels";
-import FooterMobil from "./components/FooterMobil";
 import { AwardCarousel } from "./components/AwardCarousel";
 import Contact from "./components/Contact";
 import MiraHotelsDesktop from "./components/MiraHotelsDesktop";
@@ -9,12 +7,11 @@ import ContactDesktop from "./components/ContactDesktop";
 import { AwardDesktop } from "./components/AwardDesktop";
 
 import MiramareVideo from "./components/MiramareVideo";
-import Provider from "./components/Provider";
-import HomePage from "./FetchPage"
-import { fetchTextsByLanguage, fetchComponents } from "./lib/data";
-import TextManager from "./api/TextFetcher";
+import { fetchTextsByLanguage} from "./lib/data";
 import MiramareVideoMobil from "./components/MiramareVideoMobil";
+import { LanguageProvider } from "./lib/LanguageContext";
 
+import Cookies from 'js-cookie';
 
 
 const images = [
@@ -51,7 +48,7 @@ const imageAwards = [
 ]
 
 
-export default function Home() {
+export default async function Home() {
 
   // const data = fetchComponents("Menu")
   // console.log('====================================');
@@ -60,6 +57,7 @@ export default function Home() {
   // const data1 = fetchTextsByLanguage(2, "DE")
   // console.log(data1);
 
+  const mirahotels = await fetchTextsByLanguage('hotels');
 
   return (
     <div className="flex flex-col " >
@@ -74,7 +72,7 @@ export default function Home() {
       </div>
       <div className="hidden relative py-6 sm:flex flex-col justify-center">
 
-        <MiraHotelsDesktop />
+        <MiraHotelsDesktop translations={mirahotels}/>
       </div>
       <div className="sm:hidden relative flex flex-row my-4">
 
