@@ -88,7 +88,7 @@ export default async function Home() {
       <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
         <MiramareVideo />
       </div>
-      <div className="sm:hidden relative flex items-center my-4 justify-center">
+      <div className="md:hidden relative flex items-center my-4 justify-center">
         <MiramareVideoMobil />
       </div>
 

@@ -3,7 +3,7 @@ import { Heading, Text, Blockquote, Button, Link } from "@radix-ui/themes";
 import React from "react";
 import * as Separator from "@radix-ui/react-separator";
 
-const MiraHotelsDesktop = async ({translations}) => {
+const MiraHotelsDesktop =  ({translations}) => {
     
     const hotel = translations.mirahotel;
     const defHotel=translations.defhotel;
@@ -29,7 +29,7 @@ const MiraHotelsDesktop = async ({translations}) => {
                     <Heading className="text-slate-800 text-xl font-semibold">{beach}</Heading>
                     <Text className="text-slate-400 text-base mb-2 font-semibold"> {side} </Text>
                     <img src="https://miramarehotels.com/assets/frontend/images/homepage/hotels-display-1.webp" style={{ objectFit: "contain" }}></img>
-                    <Button highContrast className='absolute border-2 items-end border-white bg-transparent flex-grow mb-3  w-20 h-10 text-white text-center text-sm hover:bg-white hover:text-blue-400'> {visit}</Button>
+                    <Button highContrast className='absolute border-2 items-end border-white bg-transparent flex-grow mb-3  w-[150px] h-[50px] text-white text-center text-lg font-medium hover:bg-white hover:text-blue-400'> {visit}</Button>
                 </div>
 
 
@@ -37,7 +37,7 @@ const MiraHotelsDesktop = async ({translations}) => {
                     <Heading className="text-slate-800 text-xl text-center font-semibold">{queen}</Heading>
                     <Text className="text-base text-slate-400 mb-2 font-semibold"> {side} </Text>
                     <img src="https://miramarehotels.com/assets/frontend/images/homepage/hotels-display-2.webp" style={{ objectFit: "cover" }}></img>
-                    <Button highContrast className='absolute border-2 border-white bg-transparent flex-grow mb-3 w-20 h-10 text-white text-center text-sm hover:bg-white hover:text-blue-400'> {visit}</Button>
+                    <Button highContrast className='absolute border-2 border-white bg-transparent flex-grow mb-3 w-[150px] h-[50px] text-white text-center text-lg font-medium hover:bg-white hover:text-blue-400'> {visit}</Button>
 
                 </div>
 
