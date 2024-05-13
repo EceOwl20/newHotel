@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { Button, Text } from "@radix-ui/themes";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
@@ -12,9 +12,20 @@ import { FaPhoneAlt } from "react-icons/fa";
 import * as Separator from "@radix-ui/react-separator";
 import Cookies from "js-cookie";
 
-const Navbar =  ({ tranlastions }) => {
+const LanguageContext = createContext();
+
+export const useLanguage = () => useContext(LanguageContext);
+
+const Navbar = ({ tranlastions }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const [language, setLanguage] = useState(Cookies.get('language') || "TR");
+
+  useEffect(() => {
+    Cookies.set("language", language);   
+    
+  }, [language]);
 
   const menu = tranlastions.menu;
   const book = tranlastions.booknow;
@@ -24,14 +35,14 @@ const Navbar =  ({ tranlastions }) => {
   };
 
   const handleLanguageChange = (language) => {
-    // Set a cookie with the selected language
     var selectBox = document.getElementById("selectBox");
     var language = selectBox.options[selectBox.selectedIndex].value;
     //alert(language);
     Cookies.set("language", language);
-    alert(Cookies.get("language",language));
+    alert(Cookies.get("language", language));
+    setLanguage(language);
+    window.location.href = '/';
 
-    // ... rest of your language change logic
   };
 
   return (
@@ -39,8 +50,6 @@ const Navbar =  ({ tranlastions }) => {
       <div className=" mx-auto min-w-full px-2 sm:px-6 lg:px-8 ">
         <div className="relative flex h-28 items-center justify-between ">
           <div className=" absolute inline-flex mx-10 sm:left-[150px]  z-50  text-white text-xl items-center">
-
-
             <select
               id="selectBox"
               className="bg-lime-900 "
@@ -48,13 +57,33 @@ const Navbar =  ({ tranlastions }) => {
                 console.log("onChange event fired");
                 console.log("e.target.value:", e.target.value); // e.target.value değerini kontrol et
                 handleLanguageChange(e.target.value);
-                
               }}
             >
-              <option value="EN" className="hover:bg-white text-xl hover:text-lime-900">EN</option>
-              <option value="TR" className="hover:bg-white text-xl hover:text-lime-900">TR</option>
-              <option value="RU" className="hover:bg-white text-xl hover:text-lime-900">RU</option>
-              <option value="DE" className="hover:bg-white text-xl hover:text-lime-900">DE</option>
+              <option
+                value="EN"
+                className="hover:bg-white text-xl hover:text-lime-900"
+                
+              >
+                EN
+              </option>
+              <option
+                value="TR"
+                className="hover:bg-white text-xl hover:text-lime-900"
+              >
+                TR
+              </option>
+              <option
+                value="RU"
+                className="hover:bg-white text-xl hover:text-lime-900"
+              >
+                RU
+              </option>
+              <option
+                value="DE"
+                className="hover:bg-white text-xl hover:text-lime-900"
+              >
+                DE
+              </option>
 
               {/* Diğer diller */}
             </select>

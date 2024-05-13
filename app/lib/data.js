@@ -1,7 +1,7 @@
 import prisma from "@/prisma/client";
 import Cookies from 'js-cookie';
 
-export const fetchTextsByLanguage = async (compName,language) => {
+export const fetchTextsByLanguage = async (compName, language) => {
     
   let column;
   switch (language) {
@@ -17,7 +17,7 @@ export const fetchTextsByLanguage = async (compName,language) => {
     case 'DE':
       column = 'textDe';
       break;
-    // Add more cases as needed
+
     default:
       console.error(`Unsupported language: ${language}`);
       return {};
@@ -29,7 +29,7 @@ export const fetchTextsByLanguage = async (compName,language) => {
         compName: compName,
       },
       select: {
-        column: true,
+        [column]: true,
       },
     });
     if (!text) {
@@ -37,7 +37,7 @@ export const fetchTextsByLanguage = async (compName,language) => {
       return {}; // Return empty object 
     }
 
-    const jsonData = JSON.parse(text.language);
+    const jsonData = JSON.parse(text[column]);
     return jsonData;
   } catch (error) {
     console.error("Error fetching texts:", error);

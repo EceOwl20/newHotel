@@ -6,9 +6,18 @@ import { FOOTER_LINK, SOCIALS } from "../constants";
 import { Text } from "@radix-ui/themes";
 import * as Separator from "@radix-ui/react-separator";
 
-const FooterDesktop = ({language}) => {
+const FooterDesktop = ({translations}) => {
+
+
+  const contact=translations.contact;
+  const message = translations.message;
+  const follow=translations.follow;
+  const opportunities=translations.opportunities;
+  const social=translations.social;
+
   return (
     <footer className="bg-[url('https://miramarehotels.com/assets/frontend/images/footer/footer-desktop.webp')] relative">
+
       <div className="bg-black/50 absolute inset-0 z-[1]"></div>
       <div className="flex flex-col w-full z-10 ">
         <div className="flex text-white gap-20 z-10 justify-between">
@@ -16,9 +25,9 @@ const FooterDesktop = ({language}) => {
             className=" flex-col items-start justify-start mx-4 gap-10 mt-5
                      text-white text-end text-lg "
           >
-            <h2 className=" text-2xl">CONTACT US</h2>
+            <h2 className=" text-2xl">{contact}</h2>
 
-            <Text> Or send a message </Text>
+            <Text>{message} </Text>
           </div>
 
           <img
@@ -31,9 +40,9 @@ const FooterDesktop = ({language}) => {
 
           <div className="  p-5 flex-col justify-end text-center text-white">
             <div className="flex flex-col gap-5 mb-5">
-              <h2 className=" text-2xl">FOLLOW US</h2>
+              <h2 className=" text-2xl">{follow}</h2>
               <Text className="font-bold text-base">
-                Don't miss the opportunities
+               {opportunities}
               </Text>
               <FooterColumn title={""} >
                 <ul className="regular-14 flex gap-8 justify-between ">
@@ -45,7 +54,7 @@ const FooterDesktop = ({language}) => {
                 </ul>
                 <Link href="/" className="text-white text-sm">
                   <p className="mt-5 text-base hover:text-sky-700">
-                    Social Platforms Privacy Policy
+                    {social}
                   </p>
                 </Link>
               </FooterColumn>

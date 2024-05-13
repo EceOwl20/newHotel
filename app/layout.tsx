@@ -5,20 +5,13 @@ import Navbar from "./components/Navbar";
 import FooterMobil from "./components/FooterMobil";
 import FooterDesktop from "./components/FooterDesktop";
 import { fetchTextsByLanguage } from "./lib/data";
-import cookie from 'cookie';
+import { cookies, headers  } from 'next/headers'
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  // Parse cookies
-  const cookies = cookie.parse(context.req.headers.cookie || '');
-
-  // Get language from cookies
-  const language = cookies.language || 'EN';
-  console.log(language + "FJSGHJPREJGPREOJGPOREJGOP");
-
-  // Pass language to the page component as props
-  return { props: { language } };
+export async function getServerSideProps(context:GetServerSidePropsContext) {
+  // Get the language from the request headers
+  const language = context.req.headers['accept-language'];
+  context.res.setHeader('Set-Cookie', `language=${language}; Path=/; HttpOnly`);
 }
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +25,8 @@ export const metadata: Metadata = {
     languages: {
       'en': '/en',
       'de': '/de',
+      'tr': '/tr',
+      'ru':'/ru'
     },
   },
 };
@@ -44,9 +39,14 @@ export default async function RootLayout({
   language: string
 }>) {
 
+  const cookieLanguage = cookies();
+  const lang = cookieLanguage.get('language');
+  const langValue=lang?.value;
+  
+  console.log("language " + langValue);
 
-  const navbar = await fetchTextsByLanguage('navbar', language);
-  //const footer = await fetchTextsByLanguage('footer',language);
+  const navbar = await fetchTextsByLanguage('navbar',langValue);
+  const footer = await fetchTextsByLanguage('footer',langValue);
 
   return (
     <html lang={language}>
@@ -56,10 +56,10 @@ export default async function RootLayout({
 
         {children}
         <div className="hidden relative py-6 sm:flex flex-col justify-center">
-          <FooterDesktop language={language} />
+          <FooterDesktop translations={footer} />
         </div>
         <div className="sm:hidden relative flex flex-row my-4">
-          <FooterMobil language={language} />
+          <FooterMobil translations={footer} />
 
         </div>
       </body>

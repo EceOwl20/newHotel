@@ -5,13 +5,10 @@ import Contact from "./components/Contact";
 import MiraHotelsDesktop from "./components/MiraHotelsDesktop";
 import ContactDesktop from "./components/ContactDesktop";
 import { AwardDesktop } from "./components/AwardDesktop";
-
 import MiramareVideo from "./components/MiramareVideo";
-import { fetchTextsByLanguage} from "./lib/data";
 import MiramareVideoMobil from "./components/MiramareVideoMobil";
-import { LanguageProvider } from "./lib/LanguageContext";
-
-import Cookies from 'js-cookie';
+import { fetchTextsByLanguage } from "./lib/data";
+import { cookies} from 'next/headers'
 
 
 const images = [
@@ -44,20 +41,17 @@ const imageAwards = [
   "https://miramarehotels.com/assets/frontend/images/homepage/awards/award10.webp",
   "https://miramarehotels.com/assets/frontend/images/homepage/awards/award11.webp",
   "https://miramarehotels.com/assets/frontend/images/homepage/awards/award12.webp"
-
 ]
 
 
 export default async function Home() {
 
-  // const data = fetchComponents("Menu")
-  // console.log('====================================');
-  // console.log(data);
-  // console.log('====================================');
-  // const data1 = fetchTextsByLanguage(2, "DE")
-  // console.log(data1);
+  const cookieLanguage = cookies();
+  const lang = cookieLanguage.get('language');
+  const langValue=lang?.value;
+  console.log("language " + langValue);
 
-  const mirahotels = await fetchTextsByLanguage('hotels');
+  const mirahotels = await fetchTextsByLanguage('hotels',langValue);
 
   return (
     <div className="flex flex-col " >
@@ -76,7 +70,7 @@ export default async function Home() {
       </div>
       <div className="sm:hidden relative flex flex-row my-4">
 
-        <MiraHotels />
+        <MiraHotels translations={mirahotels}/>
       </div>
 
       <div className="flex items-center justify-center mb-5 mt-10">
