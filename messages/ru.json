@@ -1,5 +1,12 @@
 { "LocaleSwitcher": {
     "label": "Сменить язык",
     "locale": "{locale, select, de {DE} en {EN} tr {TR} ru {RU} other {Неизвестно}}"
+  },
+  "Navbar":{
+    "menu":"Меню",
+    "booknow":"Бронировать сейчас",
+    "contact":"Контакты",
+    "hotels":"HOTELS",
+    "call":"Позвонить вам"
   }
 }

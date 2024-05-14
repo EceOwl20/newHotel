@@ -1,5 +1,14 @@
-{  "LocaleSwitcher": {
+{  
+  "LocaleSwitcher": {
   "label": "Change language",
   "locale": "{locale, select, de {DE} en {EN} tr {TR} ru {RU} other {Unknown}}"
+},
+
+"Navbar":{
+  "menu":"MENU",
+  "booknow":"BOOK NOW",
+  "contact":"CONTACT",
+  "hotels":"HOTELS",
+  "call":"Let Us Call You"
 }
 }

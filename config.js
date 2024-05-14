@@ -7,7 +7,7 @@ export const localePrefix = 'as-needed';
 export const pathnames = {
     "/": {
       en: "/",
-      de: "/de/startseite",
+      de: "/startseite",
       tr: "/anasayfa",
       ru: "/glavnaya",
     },

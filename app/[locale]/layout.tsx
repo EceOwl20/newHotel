@@ -44,33 +44,36 @@ export default  function RootLayout({
 }>) {
 
 
-  const cookieLanguage = cookies();
-  const lang = cookieLanguage.get('language');
-  const langValue = lang?.value;
+  // const cookieLanguage = cookies();
+  // const lang = cookieLanguage.get('language');
+  // const langValue = lang?.value;
 
-  // const navbar = await fetchTextsByLanguage('navbar', langValue);
-  // const footer = await fetchTextsByLanguage('footer', langValue);
+  // // const navbar = await fetchTextsByLanguage('navbar', langValue);
+  // // const footer = await fetchTextsByLanguage('footer', langValue);
 
   if (!locales.includes(defaultLocale)) notFound();
   const messages = useMessages();
+  
+  //-----------------------
   //aradigindan istegimiz parcayi almak icin
   //let LocalSwitcherMessages = pick(messages, "ContactForm");
 
   return (
     <html lang={language}>
       <body className={inter.className}>
+        
         <NextIntlClientProvider messages={messages}>
           <Navbar  />
-        </NextIntlClientProvider>
-
         {children}
         <div className="hidden relative py-6 sm:flex flex-col justify-center">
           <FooterDesktop />
         </div>
         <div className="sm:hidden relative flex flex-row my-4">
           <FooterMobil  />
-
         </div>
+
+        </NextIntlClientProvider>
+
       </body>
     </html>
   );

@@ -11,24 +11,21 @@ import { FaPhoneAlt } from "react-icons/fa";
 import * as Separator from "@radix-ui/react-separator";
 import Cookies from "js-cookie";
 import LangSwitcher from "../../../LangSwitcher";
+import { useTranslations } from "next-intl";
 
 const LanguageContext = createContext();
-
 export const useLanguage = () => useContext(LanguageContext);
 
 const Navbar = () => {
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
   const [language, setLanguage] = useState(Cookies.get("language") || "TR");
-
   useEffect(() => {
     Cookies.set("language", language);
   }, [language]);
-
   // const menu = tranlastions.menu;
   // const book = tranlastions.booknow;
-
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -42,6 +39,8 @@ const Navbar = () => {
     setLanguage(language);
     window.location.href = "/";
   };
+
+  const t=useTranslations('Navbar');
 
   return (
     <nav className="flex fixed bg-lime-900 z-30 w-full">
@@ -69,7 +68,7 @@ const Navbar = () => {
               className=" inline-flex items-center text-lime-900 bg-lime-900 "
             >
               <TextAlignJustifyIcon className="w-9 h-9 text-white" />
-              <Text className="lg:text-white text-xl ">MENU</Text>
+              <Text className="lg:text-white text-xl ">{t('menu')}</Text>
             </Button>
           </div>
           <div className=" absolute items-center sm:items-stretch sm:right-0">
@@ -81,7 +80,7 @@ const Navbar = () => {
                 <FaPhoneAlt className="mx-2" /> +90 (242) 756 11 43
               </Link>
               <Button className="text-lime-900 font-semibold px-6 py-2 text-lg bg-white">
-                BOOK NOW
+                {t('booknow')}
               </Button>
             </div>
           </div>
@@ -102,12 +101,12 @@ const Navbar = () => {
         <div className="flex flex-col ">
           <div className="relative">
             <h2 className="inline-flex items-center text-2xl px-8 py-4 mt-10 text-black p-2 ">
-              HOTELS
+              {t('hotels')}
             </h2>
             <div className=" mx-8 bg-gray-400 h-[1px]" />
           </div>
           <Link href="/" className="text-2xl px-8 mt-10 py-4">
-            CONTACT
+            {t('contact')}
           </Link>
         </div>
 
@@ -122,7 +121,7 @@ const Navbar = () => {
             <FaPhoneAlt className="mx-2" /> +90 (242) 756 11 43
           </Link>
           <Button className="w-25 p-5 bg-lime-900 text-white ">
-            Let us call you
+            {t('call')}
           </Button>
         </div>
       </div>
