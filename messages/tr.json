@@ -1,0 +1,14 @@
+{   "LocaleSwitcher": {
+  "label": "Dili Değiştir",
+  "locale": "{locale, select, de {DE} en {EN} tr {TR} ru {RU} other {Bilinmeyen}}"
+  
+ 
+},
+
+  "Navbar":{
+    "menu":"MENU",
+    "booknow":"REZERVASYON",
+    "contact":"İLETİŞİM",
+    "hotels":"OTELLER"
+  }
+}

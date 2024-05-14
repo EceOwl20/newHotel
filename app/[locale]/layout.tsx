@@ -1,13 +1,16 @@
 import type { GetServerSidePropsContext, Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "./components/Navbar";
 import FooterMobil from "./components/FooterMobil";
 import FooterDesktop from "./components/FooterDesktop";
 import { fetchTextsByLanguage } from "./lib/data";
-import { cookies, headers  } from 'next/headers'
+import { cookies } from 'next/headers'
+import { defaultLocale, locales } from "@/config";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 
-export async function getServerSideProps(context:GetServerSidePropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   // Get the language from the request headers
   const language = context.req.headers['accept-language'];
   context.res.setHeader('Set-Cookie', `language=${language}; Path=/; HttpOnly`);
@@ -15,10 +18,11 @@ export async function getServerSideProps(context:GetServerSidePropsContext) {
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 export const metadata: Metadata = {
   title: "Miramare Hotel",
   description: "Miramare hotels website, Antalya side",
-  keywords:"hotel, vacation, Antalya",
+  keywords: "hotel, vacation, Antalya",
   metadataBase: new URL('http://localhost:3000'),
   alternates: {
     canonical: '/',
@@ -26,12 +30,12 @@ export const metadata: Metadata = {
       'en': '/en',
       'de': '/de',
       'tr': '/tr',
-      'ru':'/ru'
+      'ru': '/ru'
     },
   },
 };
 
-export default async function RootLayout({
+export default  function RootLayout({
   children,
   language,
 }: Readonly<{
@@ -39,30 +43,36 @@ export default async function RootLayout({
   language: string
 }>) {
 
+
   const cookieLanguage = cookies();
   const lang = cookieLanguage.get('language');
-  const langValue=lang?.value;
-  
-  console.log("language " + langValue);
+  const langValue = lang?.value;
 
-  const navbar = await fetchTextsByLanguage('navbar',langValue);
-  const footer = await fetchTextsByLanguage('footer',langValue);
+  // const navbar = await fetchTextsByLanguage('navbar', langValue);
+  // const footer = await fetchTextsByLanguage('footer', langValue);
+
+  if (!locales.includes(defaultLocale)) notFound();
+  const messages = useMessages();
+  //aradigindan istegimiz parcayi almak icin
+  //let LocalSwitcherMessages = pick(messages, "ContactForm");
 
   return (
     <html lang={language}>
       <body className={inter.className}>
-
-        <Navbar tranlastions={navbar} />
+        <NextIntlClientProvider messages={messages}>
+          <Navbar  />
+        </NextIntlClientProvider>
 
         {children}
         <div className="hidden relative py-6 sm:flex flex-col justify-center">
-          <FooterDesktop translations={footer} />
+          <FooterDesktop />
         </div>
         <div className="sm:hidden relative flex flex-row my-4">
-          <FooterMobil translations={footer} />
+          <FooterMobil  />
 
         </div>
       </body>
     </html>
   );
 }
+

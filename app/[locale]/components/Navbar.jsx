@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { Button, Text } from "@radix-ui/themes";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
   TextAlignJustifyIcon,
   TriangleDownIcon,
@@ -11,24 +10,24 @@ import {
 import { FaPhoneAlt } from "react-icons/fa";
 import * as Separator from "@radix-ui/react-separator";
 import Cookies from "js-cookie";
+import LangSwitcher from "../../../LangSwitcher";
 
 const LanguageContext = createContext();
 
 export const useLanguage = () => useContext(LanguageContext);
 
-const Navbar = ({ tranlastions }) => {
+const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const [language, setLanguage] = useState(Cookies.get('language') || "TR");
+  const [language, setLanguage] = useState(Cookies.get("language") || "TR");
 
   useEffect(() => {
-    Cookies.set("language", language);   
-    
+    Cookies.set("language", language);
   }, [language]);
 
-  const menu = tranlastions.menu;
-  const book = tranlastions.booknow;
+  // const menu = tranlastions.menu;
+  // const book = tranlastions.booknow;
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -41,53 +40,19 @@ const Navbar = ({ tranlastions }) => {
     Cookies.set("language", language);
     alert(Cookies.get("language", language));
     setLanguage(language);
-    window.location.href = '/';
-
+    window.location.href = "/";
   };
 
   return (
     <nav className="flex fixed bg-lime-900 z-30 w-full">
-      <div className=" mx-auto min-w-full px-2 sm:px-6 lg:px-8 ">
+      <div className=" mx-auto min-w-full px-2 sm:px-6 md:px-7 lg:px-8 ">
         <div className="relative flex h-28 items-center justify-between ">
-          <div className=" absolute inline-flex mx-10 sm:left-[150px]  z-50  text-white text-xl items-center">
-            <select
-              id="selectBox"
-              className="bg-lime-900 "
-              onChange={(e) => {
-                console.log("onChange event fired");
-                console.log("e.target.value:", e.target.value); // e.target.value değerini kontrol et
-                handleLanguageChange(e.target.value);
-              }}
-            >
-              <option
-                value="EN"
-                className="hover:bg-white text-xl hover:text-lime-900"
-                
-              >
-                EN
-              </option>
-              <option
-                value="TR"
-                className="hover:bg-white text-xl hover:text-lime-900"
-              >
-                TR
-              </option>
-              <option
-                value="RU"
-                className="hover:bg-white text-xl hover:text-lime-900"
-              >
-                RU
-              </option>
-              <option
-                value="DE"
-                className="hover:bg-white text-xl hover:text-lime-900"
-              >
-                DE
-              </option>
-
-              {/* Diğer diller */}
-            </select>
+          <div className=" absolute inline-flex mx-10 sm:left-[150px] z-50 items-center">
+            <div className="bg-black">
+              <LangSwitcher />
+            </div>
           </div>
+
           <div className="relative flex flex-shrink-0 sm:justify-center md:flex flex-grow items-center">
             <span className="text-white justify-center flex-grow flex  flex-shrink-0">
               <img
@@ -104,11 +69,11 @@ const Navbar = ({ tranlastions }) => {
               className=" inline-flex items-center text-lime-900 bg-lime-900 "
             >
               <TextAlignJustifyIcon className="w-9 h-9 text-white" />
-              <Text className="lg:text-white text-xl ">{menu}</Text>
+              <Text className="lg:text-white text-xl ">MENU</Text>
             </Button>
           </div>
           <div className=" absolute items-center sm:items-stretch sm:right-0">
-            <div className="hidden sm:block space-x-3">
+            <div className="hidden lg:block space-x-3">
               <Link
                 href="/"
                 className="text-white px-2 py-2 inline-flex text-xl items-center"
@@ -116,7 +81,7 @@ const Navbar = ({ tranlastions }) => {
                 <FaPhoneAlt className="mx-2" /> +90 (242) 756 11 43
               </Link>
               <Button className="text-lime-900 font-semibold px-6 py-2 text-lg bg-white">
-                {book}
+                BOOK NOW
               </Button>
             </div>
           </div>
@@ -132,7 +97,7 @@ const Navbar = ({ tranlastions }) => {
             <CrossCircledIcon className="w-7 h-7" />
           </Button>
 
-          <h1 className="text-xl font-bold px-3 py-5">{menu}</h1>
+          <h1 className="text-xl font-bold px-3 py-5"></h1>
         </div>
         <div className="flex flex-col ">
           <div className="relative">

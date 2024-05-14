@@ -8,7 +8,10 @@ import { AwardDesktop } from "./components/AwardDesktop";
 import MiramareVideo from "./components/MiramareVideo";
 import MiramareVideoMobil from "./components/MiramareVideoMobil";
 import { fetchTextsByLanguage } from "./lib/data";
-import { cookies} from 'next/headers'
+import { cookies } from 'next/headers'
+import LocaleSwitcherSelect from "../../LocaleSwitcherSelect";
+import { defaultLocale, locales } from "@/config"; 
+import LangSwitcher from "../../LangSwitcher";
 
 
 const images = [
@@ -48,10 +51,9 @@ export default async function Home() {
 
   const cookieLanguage = cookies();
   const lang = cookieLanguage.get('language');
-  const langValue=lang?.value;
-  console.log("language " + langValue);
+  const langValue = lang?.value;
 
-  const mirahotels = await fetchTextsByLanguage('hotels',langValue);
+  const mirahotels = await fetchTextsByLanguage('hotels', langValue);
 
   return (
     <div className="flex flex-col " >
@@ -64,13 +66,13 @@ export default async function Home() {
         <EmblaCarousel images={images} />
 
       </div>
-      <div className="hidden relative py-6 sm:flex flex-col justify-center">
+      <div className="hidden relative py-6 md:flex flex-col justify-center">
 
-        <MiraHotelsDesktop translations={mirahotels}/>
+        <MiraHotelsDesktop translations={mirahotels} />
       </div>
-      <div className="sm:hidden relative flex flex-row my-4">
+      <div className="md:hidden relative flex flex-row my-4">
 
-        <MiraHotels translations={mirahotels}/>
+        <MiraHotels  />
       </div>
 
       <div className="flex items-center justify-center mb-5 mt-10">
@@ -78,26 +80,30 @@ export default async function Home() {
       </div>
 
 
-      <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
+      <div className="hidden relative py-6 md:flex flex-col justify-center my-10">
         <AwardDesktop images={imageAwards} />
       </div>
-      <div className="sm:hidden relative flex items-center my-4 justify-center">
+      <div className="md:hidden relative flex items-center my-4 justify-center">
         <AwardCarousel images={imageAwards} />
       </div>
 
       <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
         <MiramareVideo />
       </div>
-      <div className="md:hidden relative flex items-center my-4 justify-center">
+      <div className="sm:hidden relative flex items-center my-4 justify-center">
         <MiramareVideoMobil />
       </div>
 
-      <div className="hidden relative py-6 sm:flex flex-col justify-center my-10">
+      <div className="hidden relative py-6 md:flex flex-col justify-center my-10">
         <ContactDesktop />
 
       </div>
-      <div className="sm:hidden relative flex items-center my-4 justify-center">
+      <div className="md:hidden relative flex items-center my-4 justify-center">
         <Contact />
+      </div>
+
+      <div className="bg-black w-20 ml-10">
+        <LangSwitcher/>
       </div>
 
 
@@ -108,3 +114,5 @@ export default async function Home() {
 
 
 }
+
+

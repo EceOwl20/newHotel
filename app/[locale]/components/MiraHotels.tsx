@@ -3,7 +3,7 @@ import { Heading, Text, Blockquote, Button, Link } from '@radix-ui/themes'
 import React from 'react'
 import * as Separator from "@radix-ui/react-separator";
 
-const MiraHotels = ({translations}) => {
+const MiraHotels = () => {
     return (
         <div className='mt-20'>
             <div className='justify-center text-center mx-5'>

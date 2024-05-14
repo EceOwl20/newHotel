@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "app/components/EmblaCarousel.jsx",
     "app/components/AwardCarousel.jsx",
-    "app/lib/data.js"
+    "app/[locale]/lib/data.js"
 , "app/components/Provider.jsx", "app/api/text/NavbarServer.jsx", "app/components/Navbar.jsx", "app/components/MiraHotelsDesktop.jsx", "app/components/FooterDesktop.tsx"  ],
   "exclude": ["node_modules"]
 }
